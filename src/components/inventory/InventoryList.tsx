@@ -25,7 +25,7 @@ const InventoryList = () => {
   const getStockStatus = (quantity: number, minQuantity: number) => {
     if (quantity <= 0) return { label: "Sem Estoque", variant: "destructive" as const };
     if (quantity < minQuantity) return { label: "Baixo", variant: "destructive" as const };
-    if (quantity < minQuantity * 2) return { label: "Médio", variant: "accent" as const };
+    if (quantity < minQuantity * 2) return { label: "Médio", variant: "secondary" as const };
     return { label: "Bom", variant: "secondary" as const };
   };
 
