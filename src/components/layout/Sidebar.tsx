@@ -6,8 +6,7 @@ import {
   Car, 
   DollarSign, 
   Database, 
-  Users, 
-  Calendar
+  Wrench
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { 
@@ -26,9 +25,8 @@ const MainSidebar = () => {
     { title: "Dashboard", icon: Database, url: "/" },
     { title: "Veículos", icon: Car, url: "/vehicles" },
     { title: "Estoque", icon: Package, url: "/inventory" },
+    { title: "Serviços", icon: Wrench, url: "/services" },
     { title: "Despesas", icon: DollarSign, url: "/expenses" },
-    { title: "Clientes", icon: Users, url: "/clients" },
-    { title: "Agendamentos", icon: Calendar, url: "/appointments" },
     { title: "Configurações", icon: Settings, url: "/settings" }
   ];
 

@@ -11,6 +11,7 @@ import Vehicles from "./pages/Vehicles";
 import VehicleDetails from "./pages/VehicleDetails";
 import Inventory from "./pages/Inventory";
 import Expenses from "./pages/Expenses";
+import Services from "./pages/Services";
 import Navbar from "./components/layout/Navbar";
 import MainSidebar from "./components/layout/Sidebar";
 
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/vehicles/:id" element={<VehicleDetails />} />
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/expenses" element={<Expenses />} />
+                <Route path="/services" element={<Services />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
