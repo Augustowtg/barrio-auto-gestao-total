@@ -1,9 +1,19 @@
 
-import { Car, DollarSign, Package, Users } from "lucide-react";
+import { Car, DollarSign, Package, Users, Wrench, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import StatsCard from "@/components/dashboard/StatsCard";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import ServiceForm from "@/components/services/ServiceForm";
 
 const Index = () => {
+  const navigate = useNavigate();
+  
+  const handleNavigation = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <div className="p-6 max-w-[1400px] mx-auto">
       <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
@@ -33,6 +43,61 @@ const Index = () => {
           icon={Users}
           trend={{ value: 5, isPositive: true }}
         />
+      </div>
+      
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-8">
+        <Button 
+          className="h-24 text-lg" 
+          variant="outline"
+          onClick={() => handleNavigation('/vehicles')}
+        >
+          <Car className="mr-2 h-6 w-6" />
+          Gerenciar Veículos
+        </Button>
+        
+        <Button 
+          className="h-24 text-lg" 
+          variant="outline"
+          onClick={() => handleNavigation('/inventory')}
+        >
+          <Package className="mr-2 h-6 w-6" />
+          Gerenciar Estoque
+        </Button>
+        
+        <Button 
+          className="h-24 text-lg" 
+          variant="outline"
+          onClick={() => handleNavigation('/services')}
+        >
+          <Wrench className="mr-2 h-6 w-6" />
+          Gerenciar Serviços
+        </Button>
+        
+        <Button 
+          className="h-24 text-lg" 
+          variant="outline"
+          onClick={() => handleNavigation('/expenses')}
+        >
+          <DollarSign className="mr-2 h-6 w-6" />
+          Gerenciar Despesas
+        </Button>
+      </div>
+      
+      <div className="flex justify-center mb-8">
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="h-16 px-8 text-lg" size="lg">
+              <Plus className="mr-2 h-6 w-6" />
+              Novo Serviço
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[600px]">
+            <DialogHeader>
+              <DialogTitle>Novo Serviço</DialogTitle>
+            </DialogHeader>
+            <ServiceForm onSuccess={() => handleNavigation('/services')} />
+          </DialogContent>
+        </Dialog>
       </div>
       
       <div className="grid gap-8 grid-cols-1 lg:grid-cols-2 mb-8">

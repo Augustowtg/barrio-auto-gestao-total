@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import ServiceForm from "./ServiceForm";
 
 // Mock data - in a real app this would come from an API
 const mockServices = [
@@ -16,6 +17,7 @@ const mockServices = [
 const ServiceList = () => {
   const [services, setServices] = useState(mockServices);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isFormOpen, setIsFormOpen] = useState(false);
   
   const filteredServices = services.filter(service => 
     service.vehicle.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,9 +36,17 @@ const ServiceList = () => {
         return "bg-yellow-100 text-yellow-800";
       case "Agendado":
         return "bg-purple-100 text-purple-800";
+      case "Cancelado":
+        return "bg-red-100 text-red-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
+  };
+
+  const handleServiceAdded = () => {
+    setIsFormOpen(false);
+    // In a real app, we would fetch the updated services from the API
+    // For now, we'll just close the dialog
   };
 
   return (
@@ -51,7 +61,17 @@ const ServiceList = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button>Novo Serviço</Button>
+          <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+            <DialogTrigger asChild>
+              <Button>Novo Serviço</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[600px]">
+              <DialogHeader>
+                <DialogTitle>Novo Serviço</DialogTitle>
+              </DialogHeader>
+              <ServiceForm onSuccess={handleServiceAdded} />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
       
