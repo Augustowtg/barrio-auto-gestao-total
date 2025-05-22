@@ -291,7 +291,7 @@ const ServiceForm = ({ onSuccess, initialData }: ServiceFormProps) => {
             />
           </div>
           
-          {/* Vehicle Selection Section */}
+          {/* Vehicle Selection Section - Prioritizing License Plate */}
           <div className="border p-4 rounded-md bg-slate-50">
             <h3 className="font-medium text-lg mb-4">Informações do Veículo</h3>
             
@@ -431,7 +431,7 @@ const ServiceForm = ({ onSuccess, initialData }: ServiceFormProps) => {
             )}
           </div>
           
-          {/* Labor Services Section */}
+          {/* Labor Services Section (Mão de Obra) */}
           <div className="border p-4 rounded-md bg-slate-50">
             <h3 className="font-medium text-lg mb-4">Mão de Obra</h3>
             
