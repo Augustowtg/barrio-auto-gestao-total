@@ -6,7 +6,9 @@ import {
   Car, 
   DollarSign, 
   Database, 
-  Wrench
+  Wrench,
+  Receipt,
+  FileText
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { 
@@ -26,7 +28,9 @@ const MainSidebar = () => {
     { title: "Veículos", icon: Car, url: "/vehicles" },
     { title: "Estoque", icon: Package, url: "/inventory" },
     { title: "Serviços", icon: Wrench, url: "/services" },
-    { title: "Despesas", icon: DollarSign, url: "/expenses" },
+    { title: "Financeiro", icon: DollarSign, url: "/finance" },
+    { title: "Docs. Fiscais", icon: FileText, url: "/fiscal" },
+    { title: "Despesas", icon: Receipt, url: "/expenses" },
     { title: "Configurações", icon: Settings, url: "/settings" }
   ];
 
