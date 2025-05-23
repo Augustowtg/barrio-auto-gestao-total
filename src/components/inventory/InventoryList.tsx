@@ -3,6 +3,9 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import InventoryForm from "./InventoryForm";
+import InventoryAdjustForm from "./InventoryAdjustForm";
 
 // Mock data
 const mockItems = [
@@ -16,6 +19,8 @@ const mockItems = [
 const InventoryList = () => {
   const [items, setItems] = useState(mockItems);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [adjustItem, setAdjustItem] = useState<{id: number, name: string, quantity: number} | null>(null);
   
   const filteredItems = items.filter(item => 
     item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -27,6 +32,14 @@ const InventoryList = () => {
     if (quantity < minQuantity) return { label: "Baixo", variant: "destructive" as const };
     if (quantity < minQuantity * 2) return { label: "Médio", variant: "secondary" as const };
     return { label: "Bom", variant: "secondary" as const };
+  };
+
+  const handleAdjustStock = (item: any) => {
+    setAdjustItem({
+      id: item.id,
+      name: item.name,
+      quantity: item.quantity
+    });
   };
 
   return (
@@ -41,7 +54,7 @@ const InventoryList = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button>Novo Item</Button>
+          <Button onClick={() => setShowAddForm(true)}>Novo Item</Button>
         </div>
       </div>
       
@@ -71,7 +84,13 @@ const InventoryList = () => {
                 <TableCell className="text-right">
                   <div className="flex justify-end gap-2">
                     <Button variant="outline" size="sm">Editar</Button>
-                    <Button variant="outline" size="sm">Ajustar</Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      onClick={() => handleAdjustStock(item)}
+                    >
+                      Ajustar
+                    </Button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -79,6 +98,22 @@ const InventoryList = () => {
           })}
         </TableBody>
       </Table>
+
+      <InventoryForm 
+        open={showAddForm} 
+        onOpenChange={setShowAddForm}
+        onSuccess={() => setShowAddForm(false)}
+      />
+
+      {adjustItem && (
+        <InventoryAdjustForm
+          open={!!adjustItem}
+          onOpenChange={() => setAdjustItem(null)}
+          itemName={adjustItem.name}
+          currentQuantity={adjustItem.quantity}
+          onSuccess={() => setAdjustItem(null)}
+        />
+      )}
     </div>
   );
 };

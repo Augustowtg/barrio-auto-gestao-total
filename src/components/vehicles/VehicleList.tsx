@@ -3,6 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import VehicleForm from "./VehicleForm";
 
 // Mock data - in a real app this would come from an API or database
 const mockVehicles = [
@@ -16,6 +17,7 @@ const mockVehicles = [
 const VehicleList = () => {
   const [vehicles, setVehicles] = useState(mockVehicles);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAddForm, setShowAddForm] = useState(false);
   
   const filteredVehicles = vehicles.filter(vehicle => 
     vehicle.plate.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -36,7 +38,7 @@ const VehicleList = () => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <Button>Novo Veículo</Button>
+          <Button onClick={() => setShowAddForm(true)}>Novo Veículo</Button>
         </div>
       </div>
       
@@ -70,6 +72,12 @@ const VehicleList = () => {
           ))}
         </TableBody>
       </Table>
+
+      <VehicleForm 
+        open={showAddForm} 
+        onOpenChange={setShowAddForm}
+        onSuccess={() => setShowAddForm(false)}
+      />
     </div>
   );
 };
