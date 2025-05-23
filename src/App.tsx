@@ -15,6 +15,7 @@ import Services from "./pages/Services";
 import ServiceOrders from "./pages/ServiceOrders";
 import Finance from "./pages/Finance";
 import QuickStart from "./pages/QuickStart";
+import Settings from "./pages/Settings";
 import Navbar from "./components/layout/Navbar";
 import MainSidebar from "./components/layout/Sidebar";
 
