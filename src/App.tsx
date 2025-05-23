@@ -1,4 +1,5 @@
 
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -33,8 +34,8 @@ const App = () => (
             <div className="flex-1">
               <Navbar />
               <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/quickstart" element={<QuickStart />} />
+                <Route path="/" element={<QuickStart />} />
+                <Route path="/dashboard" element={<Index />} />
                 <Route path="/vehicles" element={<Vehicles />} />
                 <Route path="/vehicles/:id" element={<VehicleDetails />} />
                 <Route path="/inventory" element={<Inventory />} />
