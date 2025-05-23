@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -137,7 +137,7 @@ const FiscalDocumentForm = ({ onSuccess }: FiscalDocumentFormProps) => {
   };
 
   // Update form values when selected items or services change
-  React.useEffect(() => {
+  useEffect(() => {
     form.setValue("items", selectedItems);
     form.setValue("services", selectedServices);
   }, [selectedItems, selectedServices, form]);
