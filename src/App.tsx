@@ -13,7 +13,7 @@ import Inventory from "./pages/Inventory";
 import Expenses from "./pages/Expenses";
 import Services from "./pages/Services";
 import Finance from "./pages/Finance";
-import FiscalDocuments from "./pages/FiscalDocuments";
+import QuickStart from "./pages/QuickStart";
 import Navbar from "./components/layout/Navbar";
 import MainSidebar from "./components/layout/Sidebar";
 
@@ -32,13 +32,13 @@ const App = () => (
               <Navbar />
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/quickstart" element={<QuickStart />} />
                 <Route path="/vehicles" element={<Vehicles />} />
                 <Route path="/vehicles/:id" element={<VehicleDetails />} />
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/expenses" element={<Expenses />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/finance" element={<Finance />} />
-                <Route path="/fiscal" element={<FiscalDocuments />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

@@ -5,7 +5,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import ServiceForm from "@/components/services/ServiceForm";
 import { useNavigate } from "react-router-dom";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import FiscalDocumentForm from "@/components/fiscal/FiscalDocumentForm";
 import PayableForm from "@/components/finance/PayableForm";
 import ReceivableForm from "@/components/finance/ReceivableForm";
 
@@ -14,10 +13,6 @@ const Navbar = () => {
 
   const handleServiceAdded = () => {
     navigate("/services");
-  };
-
-  const handleFiscalDocumentAdded = () => {
-    navigate("/fiscal");
   };
 
   const handleReceivableAdded = () => {
@@ -63,20 +58,6 @@ const Navbar = () => {
                   <DialogTitle>Novo Serviço</DialogTitle>
                 </DialogHeader>
                 <ServiceForm onSuccess={handleServiceAdded} />
-              </DialogContent>
-            </Dialog>
-            
-            <Dialog>
-              <DialogTrigger asChild>
-                <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                  Novo Documento Fiscal
-                </DropdownMenuItem>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[600px]">
-                <DialogHeader>
-                  <DialogTitle>Novo Documento Fiscal</DialogTitle>
-                </DialogHeader>
-                <FiscalDocumentForm onSuccess={handleFiscalDocumentAdded} />
               </DialogContent>
             </Dialog>
             

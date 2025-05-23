@@ -8,7 +8,7 @@ import {
   Database, 
   Wrench,
   Receipt,
-  FileText
+  Play
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { 
@@ -25,11 +25,11 @@ import {
 const MainSidebar = () => {
   const menuItems = [
     { title: "Dashboard", icon: Database, url: "/" },
+    { title: "Iniciar", icon: Play, url: "/quickstart" },
     { title: "Veículos", icon: Car, url: "/vehicles" },
     { title: "Estoque", icon: Package, url: "/inventory" },
     { title: "Serviços", icon: Wrench, url: "/services" },
     { title: "Financeiro", icon: DollarSign, url: "/finance" },
-    { title: "Docs. Fiscais", icon: FileText, url: "/fiscal" },
     { title: "Despesas", icon: Receipt, url: "/expenses" },
     { title: "Configurações", icon: Settings, url: "/settings" }
   ];
