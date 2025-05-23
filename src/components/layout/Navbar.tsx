@@ -12,7 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleServiceAdded = () => {
-    navigate("/services");
+    navigate("/service-orders");
   };
 
   const handleReceivableAdded = () => {
@@ -50,12 +50,12 @@ const Navbar = () => {
             <Dialog>
               <DialogTrigger asChild>
                 <DropdownMenuItem onSelect={(e) => e.preventDefault()}>
-                  Novo Serviço
+                  Nova Ordem de Serviço
                 </DropdownMenuItem>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[600px]">
                 <DialogHeader>
-                  <DialogTitle>Novo Serviço</DialogTitle>
+                  <DialogTitle>Nova Ordem de Serviço</DialogTitle>
                 </DialogHeader>
                 <ServiceForm onSuccess={handleServiceAdded} />
               </DialogContent>

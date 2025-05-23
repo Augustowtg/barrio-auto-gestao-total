@@ -41,10 +41,10 @@ const QuickStart = () => {
         <Button 
           className="h-24 text-lg" 
           variant="outline"
-          onClick={() => handleNavigation('/services')}
+          onClick={() => handleNavigation('/service-orders')}
         >
           <Wrench className="mr-2 h-6 w-6" />
-          Gerenciar Serviços
+          Ordens de Serviço
         </Button>
         
         <Button 
@@ -62,14 +62,14 @@ const QuickStart = () => {
           <DialogTrigger asChild>
             <Button className="h-16 px-8 text-lg" size="lg">
               <Plus className="mr-2 h-6 w-6" />
-              Novo Serviço
+              Nova Ordem de Serviço
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[600px]">
             <DialogHeader>
-              <DialogTitle>Novo Serviço</DialogTitle>
+              <DialogTitle>Nova Ordem de Serviço</DialogTitle>
             </DialogHeader>
-            <ServiceForm onSuccess={() => handleNavigation('/services')} />
+            <ServiceForm onSuccess={() => handleNavigation('/service-orders')} />
           </DialogContent>
         </Dialog>
       </div>

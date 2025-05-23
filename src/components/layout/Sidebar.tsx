@@ -8,7 +8,8 @@ import {
   Database, 
   Wrench,
   Receipt,
-  Play
+  Play,
+  ClipboardList
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { 
@@ -24,11 +25,12 @@ import {
 
 const MainSidebar = () => {
   const menuItems = [
-    { title: "Dashboard", icon: Database, url: "/" },
     { title: "Iniciar", icon: Play, url: "/quickstart" },
+    { title: "Dashboard", icon: Database, url: "/" },
     { title: "Veículos", icon: Car, url: "/vehicles" },
     { title: "Estoque", icon: Package, url: "/inventory" },
     { title: "Serviços", icon: Wrench, url: "/services" },
+    { title: "Ordem de Serviço", icon: ClipboardList, url: "/service-orders" },
     { title: "Financeiro", icon: DollarSign, url: "/finance" },
     { title: "Despesas", icon: Receipt, url: "/expenses" },
     { title: "Configurações", icon: Settings, url: "/settings" }

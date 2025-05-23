@@ -12,6 +12,7 @@ import VehicleDetails from "./pages/VehicleDetails";
 import Inventory from "./pages/Inventory";
 import Expenses from "./pages/Expenses";
 import Services from "./pages/Services";
+import ServiceOrders from "./pages/ServiceOrders";
 import Finance from "./pages/Finance";
 import QuickStart from "./pages/QuickStart";
 import Navbar from "./components/layout/Navbar";
@@ -38,6 +39,7 @@ const App = () => (
                 <Route path="/inventory" element={<Inventory />} />
                 <Route path="/expenses" element={<Expenses />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/service-orders" element={<ServiceOrders />} />
                 <Route path="/finance" element={<Finance />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
