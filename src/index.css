@@ -7,44 +7,44 @@
 
 @layer base {
   :root {
-    --background: 214 32% 97%;
-    --foreground: 214 84% 5%;
+    --background: 0 0% 98%;
+    --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 214 84% 5%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 214 84% 5%;
+    --popover-foreground: 0 0% 15%;
 
-    --primary: 214 84% 56%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 212 100% 47%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 20% 94%;
-    --secondary-foreground: 214 84% 15%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 214 20% 94%;
-    --muted-foreground: 214 16% 46%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 214 84% 56%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 94%;
+    --accent-foreground: 0 0% 15%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214 20% 88%;
-    --input: 214 20% 88%;
-    --ring: 214 84% 56%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
+    --ring: 212 100% 47%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 214 84% 5%;
-    --sidebar-foreground: 214 20% 97%;
-    --sidebar-primary: 214 84% 56%;
+    --sidebar-background: 0 0% 97%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 212 100% 47%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 30% 12%;
-    --sidebar-accent-foreground: 214 20% 97%;
-    --sidebar-border: 214 30% 12%;
-    --sidebar-ring: 214 84% 56%;
+    --sidebar-accent: 0 0% 92%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 0 0% 89%;
+    --sidebar-ring: 212 100% 47%;
   }
 }
 
@@ -54,6 +54,58 @@
   }
 
   body {
-    @apply bg-background text-foreground font-inter;
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* macOS-style scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* macOS-style focus rings */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* macOS-style glass effect */
+  .glass-effect {
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* macOS-style button */
+  .macos-button {
+    @apply rounded-lg bg-white/80 backdrop-blur-sm border border-black/10 shadow-sm hover:bg-white/90 transition-all duration-200;
+  }
+
+  /* macOS-style sidebar item */
+  .macos-sidebar-item {
+    @apply rounded-md px-3 py-2 text-sm font-medium transition-all duration-200 hover:bg-black/5 active:bg-black/10;
+  }
+
+  .macos-sidebar-item[data-active="true"] {
+    @apply bg-primary/10 text-primary hover:bg-primary/15;
   }
 }
