@@ -1,0 +1,16 @@
+services:
+  mecanic-app:
+    image: mecanic-app:${VERSION}
+ 
+    container_name: mecanic-app${VERSION}
+    restart: always
+    ports:
+      - "${PORT}:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "512M"
